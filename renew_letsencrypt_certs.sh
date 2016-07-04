@@ -34,6 +34,9 @@ call_renew() {
   check_letsencrypt_paths
   check_plesk_path
 
+  echo -e "\nUpdating Let's Encrypt scripts..."
+  ./letsencrypt-auto
+
   echo -e "\nProcessing $name"
 
   if [[ -z $domains ]]; then
