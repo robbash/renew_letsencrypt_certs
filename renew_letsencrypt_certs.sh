@@ -3,6 +3,8 @@
 script_path=$(dirname $0)
 log_file=renew_letsencrypt_certs.log
 
+echo "Redirecting output to $script_path/$log_file"
+
 exec 3>&1 4>&2 1>"$script_path/$log_file" 2>&1
 
 # Print header information
@@ -45,7 +47,7 @@ call_renew() {
   fi
 
   # Build Let's encrypt command
-  command="./letsencrypt-auto certonly --standalone --renew-by-default"
+  command="./letsencrypt-auto certonly --non-interactive --standalone --renew-by-default"
 
   for domain in ${domains[*]}
   do
